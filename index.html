@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="icons/icon-32.png"><title>NickHub — найди своё имя</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="index.html"><span class="wordmark"><span class="wordmark-nick">Nick</span><span class="wordmark-hub">Hub</span></span><span class="beta">BETA</span></a>
+  <div class="workspace">ТВОЁ ПРОСТРАНСТВО</div>
+  <nav><button class="nav active" id="browse"><span>⌕</span> Поиск никнеймов</button><button class="nav" id="saved"><span>☆</span> Избранное <b id="saved-count">0</b></button></nav>
+  <div class="side-bottom"><div class="faceit-mark">F<span> / </span>FACEIT COMPANION</div><p>Хорошая игра начинается<br>с твоего имени.</p><div class="developer-links"><span class="developer-label">Разработчик</span><div><a href="https://www.twitch.tv/kr1nzzzz" target="_blank" rel="noopener noreferrer" aria-label="Twitch разработчика — открыть в новой вкладке">Twitch ↗</a></div></div><span class="version">NickHub · v0.6.6</span></div>
+</aside>
+<main>
+  <header><div class="breadcrumb">Пространство <span>/</span> <strong id="crumb">Поиск никнеймов</strong></div><span class="demo-pill"><i></i> Поиск никнеймов</span></header>
+  <section class="intro"><div><div class="eyebrow">МЕНЬШЕ ПОИСКА. БОЛЬШЕ ТЕБЯ.</div><h1 id="title">Твой следующий ник — здесь<span>.</span></h1><p id="subtitle">Задай пару условий. Найди имя, которое хочется оставить.</p></div><div class="abstract" aria-hidden="true"><span>n</span><span>h</span><i>↗</i></div></section>
+  <div class="notice"><span class="info">i</span><div><strong>Для поиска нужна открытая вкладка FACEIT</strong><p>Войди в аккаунт FACEIT в этом браузере и не закрывай вкладку до конца поиска. Её можно оставить в фоне.</p></div><span class="notice-tag"><a href="https://www.faceit.com/" target="_blank" rel="noopener noreferrer">Открыть FACEIT ↗</a></span></div>
+  <section class="api-panel" aria-labelledby="api-title">
+<div class="section-top"><h2 id="api-title">Проверка через магазин FACEIT</h2><a class="text-button" href="https://www.faceit.com/" target="_blank" rel="noopener noreferrer">Открыть FACEIT ↗</a></div>
+<p class="api-description">Оставь вкладку FACEIT открытой в этом браузере и войди в аккаунт. API-ключ не нужен. Выполняется только запрос проверки, без покупки и смены ника.</p>
+<form id="shop-form" class="api-fields"><div><label for="test-nickname">Никнейм для проверки</label><input id="test-nickname" value="google" type="text" maxlength="30" required autocomplete="off"></div><button class="primary" id="connect" type="submit">Проверить через FACEIT</button></form>
+<p id="api-status" role="status">Ожидается проверка. Можно искать свободные ники, Idle Claim или оба типа.</p>
+</section><div class="layout">
+    <section class="filters"><div class="section-top"><h2>Фильтры поиска</h2><button class="text-button" id="reset">Сбросить</button></div>
+    <form id="filters">
+      <label for="length">Длина никнейма <output id="length-label">4 символа</output></label><input id="length" type="range" min="3" max="12" value="4"><div class="range-labels"><span>3</span><span>12</span></div>
+      <label for="contains">Содержит <span class="optional">необязательно</span></label><input id="contains" type="text" value="503" maxlength="12" placeholder="Например, 503" autocomplete="off" spellcheck="false"><p class="hint">Символы идут подряд, в указанном порядке.</p>
+      <div class="two-fields"><div><label for="prefix">Начинается с</label><input id="prefix" maxlength="12" placeholder="Любые" autocomplete="off"></div><div><label for="suffix">Заканчивается на</label><input id="suffix" maxlength="12" placeholder="Любые" autocomplete="off"></div></div>
+      <label for="alphabet">Остальные символы</label><select id="alphabet"><option value="all">Буквы и цифры</option><option value="letters">Только буквы a–z</option><option value="digits">Только цифры 0–9</option></select>
+      <fieldset><legend>Показывать</legend><label class="check"><input type="checkbox" id="free" checked><span>Свободные</span><i class="dot green"></i></label><label class="check"><input type="checkbox" id="idle" checked><span>Idle Nickname Claim</span><i class="dot orange"></i></label></fieldset>
+      <p class="form-error" id="error" role="alert"></p><button type="submit" class="primary" id="search">Найти никнеймы <span>↗</span></button>
+      <p class="filter-foot">До 2 одновременных проверок.<br>До 120 вариантов за поиск.</p>
+    </form></section>
+    <section class="results"><div class="results-top"><div><div class="results-heading"><h2 id="results-title">Подходящие никнеймы</h2><span id="count" class="count">0</span></div><p id="summary">Подбираем имя под твои условия</p></div><label class="sort-label">Порядок<select id="sort"><option value="name">По алфавиту</option><option value="status">По статусу</option></select></label></div>
+      <div class="result-meta"><span><i class="dot green"></i> Свободен</span><span><i class="dot orange"></i> Idle Claim</span><span id="limit-note"></span></div>
+      <div id="cards" class="cards" aria-live="polite"></div>
+      <div class="empty" id="empty" hidden><span>⌕</span><h3>Пока ничего нет</h3><p id="empty-text">Попробуй изменить условия поиска.</p></div>
+      <div class="results-footer"><span>Найди своё. Сохрани на потом.</span><span>☆ Избранное хранится в этом браузере</span></div>
+    </section>
+  </div>
+  <footer><span>Создано для тех, кому важно имя.</span><span>Неофициальное расширение. Не связано с FACEIT.</span></footer>
+</main><div class="toast" id="toast" role="status" hidden></div><script src="shop-api.js"></script><script src="app.js"></script></body></html>

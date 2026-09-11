@@ -108,4 +108,3 @@ API-ключ, пароль и сервер разработчика не нуж�
 Keep this repository private to restrict access to the source. Distributed browser extensions contain inspectable client code; no packaging or obfuscation can guarantee protection against copying. No open-source license is granted with this repository.
 
 Сохраняй репозиторий приватным, чтобы ограничить доступ к исходникам. Код установленного расширения можно изучить: упаковка и обфускация не гарантируют защиту от копирования. Лицензия на свободное использование кода в этом репозитории не предоставляется.
-
